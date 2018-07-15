@@ -20,11 +20,9 @@ declare global {
                     blurAlgorithm(algo): this;
                     blurRadius(radius): this;
                     setHasFixedTransformationMatrix(value): this;
-                    // setFPS(fps: number);
-                    // startBlur();
                 }
                 class RenderScriptBlur {
-                    constructor(context)
+                    constructor(context);
                 }
             }
         }
@@ -33,7 +31,6 @@ declare global {
 
 export class BlurView extends common.BlurView {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
-    blurRadius = 12;
     constructor() {
         super();
     }
@@ -64,23 +61,11 @@ export class BlurView extends common.BlurView {
         super.initNativeView();
         this.viewInit = true;
     }
-    [common.blurRadiusProperty.getDefault](): any {
-        return this.blurRadius;
-    }
     [common.blurRadiusProperty.setNative](value: number) {
         this.blurRadius = value;
-        console.log('set blur radius', value);
         if (this.nativeView) {
+            console.log('blurRadiusProperty', value);
             (this.nativeView as eightbitlab.com.blurview.BlurView).blurRadius(value);
         }
-    //         this.nativeViewProtected.clearColorFilter();
-
     }
-    // [common.tintColorProperty.setNative](value: Color) {
-    //     if (value === undefined) {
-    //         this.nativeViewProtected.clearColorFilter();
-    //     } else {
-    //         this.nativeViewProtected.setColorFilter(value.android);
-    //     }
-    // }
 }

@@ -10,9 +10,7 @@ import { Color } from 'color';
 global.moduleMerge(common, exports);
 
 export class BlurView extends common.BlurView {
-    nativeView: UIImageView;
-    // private _imageSourceAffectsLayout: boolean = true;
-    // private _templateImageWasCreated: boolean;
+    nativeView: UIVisualEffectView;
 
     constructor() {
         super();
@@ -20,25 +18,20 @@ export class BlurView extends common.BlurView {
 
     theme = UIBlurEffectStyle.Dark;
 
-    get ios(): UIImageView {
+    get ios(): UIVisualEffectView {
         return this.nativeView;
     }
-    // isLoading: boolean;
-    // public onMeasure(widthMeasureSpec: number, heightMeasureSpec: number) {
-    //     const nativeView = this.nativeView;
-    //     if (nativeView) {
-    //         const width = layout.getMeasureSpecSize(widthMeasureSpec);
-    //         const height = layout.getMeasureSpecSize(heightMeasureSpec);
-    //         this.setMeasuredDimension(width, height);
-    //     }
-    // }
 
     public createNativeView() {
         let result = UIVisualEffectView.new();
         result.effect = UIBlurEffect.effectWithStyle(this.theme);
+        result.effect.setValueForKeyPath(this.blurRadius, 'effectSettings.blurRadius');
         return result;
     }
-    public initNativeView() {
-        super.initNativeView();
+    [common.blurRadiusProperty.setNative](value: number) {
+        this.blurRadius = value;
+        if (this.nativeView) {
+            (this.nativeView as UIVisualEffectView).effect.setValueForKeyPath(value, 'effectSettings.blurRadius');
+        }
     }
 }

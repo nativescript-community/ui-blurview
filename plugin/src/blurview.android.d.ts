@@ -20,7 +20,6 @@ declare global  {
 }
 export declare class BlurView extends common.BlurView {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
-    blurRadius: number;
     constructor();
     readonly android: eightbitlab.com.blurview.BlurView;
     createNativeView(): eightbitlab.com.blurview.BlurView;
