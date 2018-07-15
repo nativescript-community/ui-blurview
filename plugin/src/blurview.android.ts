@@ -46,7 +46,6 @@ export class BlurView extends common.BlurView {
         // set background, if your root layout doesn't have one
         const windowBackground = decorView.getBackground();
 
-        console.log('create blur view', this.blurRadius);
         blurView
             .setupWith(rootView)
             .windowBackground(windowBackground)
@@ -64,8 +63,7 @@ export class BlurView extends common.BlurView {
     [common.blurRadiusProperty.setNative](value: number) {
         this.blurRadius = value;
         if (this.nativeView) {
-            console.log('blurRadiusProperty', value);
-            (this.nativeView as eightbitlab.com.blurview.BlurView).blurRadius(value);
+            (this.nativeView as eightbitlab.com.blurview.BlurView).blurRadius(this.blurRadius);
         }
     }
 }
