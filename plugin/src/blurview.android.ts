@@ -1,5 +1,5 @@
 /// <reference path="../references.d.ts" />
-import * as common from './blurview.common';
+import { BlurViewBase, blurRadiusProperty } from './blurview.common';
 import * as app from 'application';
 import * as fs from 'file-system';
 import * as utils from 'utils/utils';
@@ -8,7 +8,6 @@ import * as imageSrc from 'image-source';
 import * as platform from 'platform';
 import { View, layout, PercentLength, Length } from 'ui/core/view';
 import { Color } from 'color';
-global.moduleMerge(common, exports);
 
 declare global {
     namespace eightbitlab {
@@ -29,7 +28,7 @@ declare global {
     }
 }
 
-export class BlurView extends common.BlurView {
+export class BlurView extends BlurViewBase {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
     constructor() {
         super();
@@ -60,7 +59,7 @@ export class BlurView extends common.BlurView {
         super.initNativeView();
         this.viewInit = true;
     }
-    [common.blurRadiusProperty.setNative](value: number) {
+    [blurRadiusProperty.setNative](value: number) {
         this.blurRadius = value;
         if (this.nativeView) {
             (this.nativeView as eightbitlab.com.blurview.BlurView).blurRadius(this.blurRadius);

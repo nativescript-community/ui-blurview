@@ -1,5 +1,5 @@
 /// <reference path="../references.d.ts" />
-import * as common from './blurview.common';
+import { BlurViewBase } from './blurview.common';
 declare global  {
     namespace eightbitlab {
         namespace com {
@@ -18,7 +18,7 @@ declare global  {
         }
     }
 }
-export declare class BlurView extends common.BlurView {
+export declare class BlurView extends BlurViewBase {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
     constructor();
     readonly android: eightbitlab.com.blurview.BlurView;

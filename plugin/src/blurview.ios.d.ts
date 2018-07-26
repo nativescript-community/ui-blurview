@@ -1,9 +1,8 @@
 /// <reference path="../references.d.ts" />
-import * as common from './blurview.common';
-export declare class BlurView extends common.BlurView {
-    nativeView: UIVisualEffectView;
+import { BlurViewBase } from './blurview.common';
+export declare class BlurView extends BlurViewBase {
+    nativeView: VisualEffectView;
     constructor();
-    theme: UIBlurEffectStyle;
-    readonly ios: UIVisualEffectView;
-    createNativeView(): UIVisualEffectView;
+    readonly ios: VisualEffectView;
+    createNativeView(): VisualEffectView;
 }
