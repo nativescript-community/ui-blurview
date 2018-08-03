@@ -1,6 +1,6 @@
 {
     "name": "nativescript-blurview",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Your awesome NativeScript plugin.",
     "main": "src/blurview",
     "typings": "src/blurview.d.ts",
