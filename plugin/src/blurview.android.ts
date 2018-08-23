@@ -60,6 +60,9 @@ export class BlurView extends BlurViewBase {
         this.viewInit = true;
     }
     [blurRadiusProperty.setNative](value: number) {
+        if (typeof value === 'string') {
+            value = parseFloat(value);
+        }
         this.blurRadius = value;
         if (this.nativeView) {
             (this.nativeView as eightbitlab.com.blurview.BlurView).blurRadius(this.blurRadius);
