@@ -1,6 +1,5 @@
-/// <reference path="../references.d.ts" />
 import { BlurViewBase } from './blurview.common';
-declare global  {
+declare global {
     namespace eightbitlab {
         namespace com {
             namespace blurview {
@@ -21,8 +20,5 @@ declare global  {
 export declare class BlurView extends BlurViewBase {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
     constructor();
-    readonly android: eightbitlab.com.blurview.BlurView;
     createNativeView(): eightbitlab.com.blurview.BlurView;
-    viewInit: boolean;
-    initNativeView(): void;
 }

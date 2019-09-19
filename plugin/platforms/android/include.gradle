@@ -4,5 +4,5 @@ android {
 }
 
 dependencies {
-	compile 'com.eightbitlab:blurview:1.4.0'
+	compile 'com.eightbitlab:blurview:1.6.2'
 }

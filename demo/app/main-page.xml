@@ -1,9 +1,14 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:bv="nativescript-blurview">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded"  xmlns:bv="nativescript-blurview" xmlns:Lottie="nativescript-lottie" >
     <Page.actionBar>
         <ActionBar title="NativeScript BlurView" class="action-bar" />
     </Page.actionBar>
-    <GridLayout rows="" columns="">
+    <GridLayout>
+        <!-- <Lottie:LottieView src="LottieLogo.json" height="130" loop="true" autoPlay="true" /> -->
         <Image src="https://wallpaperscraft.com/image/rose_flower_colorful_close-up_petals_18824_960x544.jpg" id="bgimage" stretch="aspectFill" />
-        <bv:BlurView></bv:BlurView>
+        <bv:BlurView blurRadius="{{ blurRadius }}"></bv:BlurView>
+        <GridLayout orientation="horizontal" verticalAlignment="bottom" columns="*,auto">
+            <Slider loaded="onSliderLoaded" value="{{ blurRadius }}" minValue="0" maxValue="100"></Slider>
+            <Label text="{{ blurRadius }}" verticalAlignment="center" col="1" ></Label>
+        </GridLayout>
     </GridLayout>
 </Page>

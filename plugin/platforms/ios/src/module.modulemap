@@ -1,0 +1,5 @@
+module BlurView {
+  umbrella header "BlurView.h"
+  export *
+  module * { export * }
+}
