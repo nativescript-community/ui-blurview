@@ -266,3 +266,18 @@ declare module eightbitlab {
 		}
 	}
 }
+
+declare module com {
+	export module eightbitlab {
+		export module supportrenderscriptblur {
+			export class SupportRenderScriptBlur extends java.lang.Object implements eightbitlab.com.blurview.BlurAlgorithm {
+				public static class: java.lang.Class<com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur>;
+				public destroy(): void;
+				public constructor(param0: globalAndroid.content.Context);
+				public getSupportedBitmapConfig(): globalAndroid.graphics.Bitmap.Config;
+				public blur(param0: globalAndroid.graphics.Bitmap, param1: number): globalAndroid.graphics.Bitmap;
+				public canModifyBitmap(): boolean;
+			}
+		}
+	}
+}

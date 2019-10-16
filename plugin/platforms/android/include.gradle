@@ -1,8 +1,13 @@
 /* Include.gradle configuration: http://docs.nativescript.org/plugins/plugins#includegradle-specification */
 
 android {
+	defaultConfig {
+		renderscriptTargetApi 28 //must match target sdk and build tools
+		renderscriptSupportModeEnabled true
+	}
 }
 
 dependencies {
 	compile 'com.eightbitlab:blurview:1.6.2'
+	compile 'com.eightbitlab:supportrenderscriptblur:1.0.2'
 }
