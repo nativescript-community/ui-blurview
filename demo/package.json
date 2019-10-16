@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "nativescript-blurview": "file:../plugin",
+        "nativescript-carto": "^1.2.30",
         "nativescript-lottie": "^4.0.0",
         "nativescript-theme-core": "^2.0.20",
         "tns-core-modules": "^6.1.1"

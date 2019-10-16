@@ -1,12 +1,13 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded"  xmlns:bv="nativescript-blurview" xmlns:Lottie="nativescript-lottie" >
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded"  xmlns:bv="nativescript-blurview" xmlns:Lottie="nativescript-lottie" xmlns:Map="nativescript-carto" >
     <Page.actionBar>
         <ActionBar title="NativeScript BlurView" class="action-bar" />
     </Page.actionBar>
-    <GridLayout>
-        <!-- <Lottie:LottieView src="LottieLogo.json" height="130" loop="true" autoPlay="true" /> -->
-        <Image src="https://wallpaperscraft.com/image/rose_flower_colorful_close-up_petals_18824_960x544.jpg" id="bgimage" stretch="aspectFill" />
-        <bv:BlurView blurRadius="{{ blurRadius }}"></bv:BlurView>
-        <GridLayout orientation="horizontal" verticalAlignment="bottom" columns="*,auto">
+    <GridLayout rows="*,*,*">
+        <Lottie:LottieView src="LottieLogo.json" height="130" loop="true" autoPlay="true" />
+        <Map:CartoMap row="1" />
+        <Image row="2" src="https://wallpaperscraft.com/image/rose_flower_colorful_close-up_petals_18824_960x544.jpg" id="bgimage" stretch="aspectFill" />
+        <bv:BlurView rowSpan="3" blurRadius="{{ blurRadius }}"></bv:BlurView>
+        <GridLayout  rowSpan="3" orientation="horizontal" verticalAlignment="bottom" columns="*,auto">
             <Slider loaded="onSliderLoaded" value="{{ blurRadius }}" minValue="0" maxValue="100"></Slider>
             <Label text="{{ blurRadius }}" verticalAlignment="center" col="1" ></Label>
         </GridLayout>
