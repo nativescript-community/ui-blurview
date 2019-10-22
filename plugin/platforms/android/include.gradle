@@ -8,6 +8,8 @@ android {
 }
 
 dependencies {
+	// compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
+	// compile 'no.danielzeller.blurbehindlib:blurbehindlib:1.0.0'
 	compile 'com.eightbitlab:blurview:1.6.2'
 	compile 'com.eightbitlab:supportrenderscriptblur:1.0.2'
-}
+}	

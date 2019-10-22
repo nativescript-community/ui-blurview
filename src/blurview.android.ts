@@ -2,15 +2,23 @@ import { BlurViewBase, blurRadiusProperty } from './blurview.common';
 
 export class BlurView extends BlurViewBase {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
+    // nativeViewProtected: no.danielzeller.blurbehindlib.BlurBehindLayout;
     constructor() {
         super();
     }
 
     public createNativeView() {
         const blurView = new eightbitlab.com.blurview.BlurView(this._context);
-        // ViewGroup you want to start blur from. Choose root as close to BlurView in hierarchy as possible.
-        // set background, if your root layout doesn't have one
-
+    //     const useTextureView = false;
+    //     const blurTextureScale = 0.1;
+    //     const paddingVertical = 0;
+    //     const blurView = new no.danielzeller.blurbehindlib.BlurBehindLayout(this._context, useTextureView, blurTextureScale, paddingVertical);
+    //     blurView.setUpdateMode(no.danielzeller.blurbehindlib.UpdateMode.CONTINUOUSLY);
+    //     blurView.setUseChildAlphaAsMask(false);
+    //     const decorView = this.page.nativeViewProtected;
+    //     const rootView = decorView.getRootView();
+    // console.log('createNativeView', rootView);
+    //     blurView.setViewBehind(rootView);
         return blurView;
     }
     initBlur() {
@@ -44,9 +52,9 @@ export class BlurView extends BlurViewBase {
     [blurRadiusProperty.setNative](value: number) {
         if (this.nativeView) {
             if (value === 0) {
-                (this.nativeView as eightbitlab.com.blurview.BlurView).setBlurEnabled(false);
+                this.nativeViewProtected.setBlurEnabled(false);
             } else {
-                (this.nativeView as eightbitlab.com.blurview.BlurView).setBlurRadius(Math.min(this.blurRadius / 3, 25)).setBlurEnabled(true);
+                this.nativeViewProtected.setBlurRadius(Math.min(this.blurRadius / 3, 24)).setBlurEnabled(true);
             }
         }
     }
