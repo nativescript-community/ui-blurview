@@ -9,6 +9,7 @@
         }
     },
     "dependencies": {
+        "@nstudio/nativescript-camera-plus":"^3.0.1",
         "nativescript-blurview": "file:../plugin",
         "nativescript-carto": "^1.2.30",
         "nativescript-lottie": "^4.0.0",
