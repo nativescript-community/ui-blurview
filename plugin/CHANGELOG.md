@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/Akylas/nativescript-blurview/compare/v1.0.6...v1.1.0) (2019-10-22)
+
+
+### Features
+
+* testing new android lib for blur ([fd18928](https://github.com/Akylas/nativescript-blurview/commit/fd18928))
+
+
+
+
+
 ## [1.0.6](https://github.com/Akylas/nativescript-blurview/compare/v1.0.5...v1.0.6) (2019-10-16)
 
 
