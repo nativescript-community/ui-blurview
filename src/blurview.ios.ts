@@ -1,4 +1,10 @@
-import { BlurViewBase, blurRadiusProperty, colorTintAlphaProperty, colorTintProperty, scaleProperty } from './blurview.common';
+import {
+    BlurViewBase,
+    blurRadiusProperty,
+    colorTintAlphaProperty,
+    colorTintProperty,
+    scaleProperty,
+} from './blurview.common';
 import { Color } from '@nativescript/core/color';
 
 export class BlurView extends BlurViewBase {
@@ -9,8 +15,10 @@ export class BlurView extends BlurViewBase {
         super();
     }
     public createNativeView() {
-        let visualEffectView = UIVisualEffectView.new();
-        this.blurEffect = NSClassFromString('_UICustomBlurEffect').new() as UIBlurEffect;
+        const visualEffectView = UIVisualEffectView.new();
+        this.blurEffect = NSClassFromString(
+            '_UICustomBlurEffect'
+        ).new() as UIBlurEffect;
         visualEffectView.effect = this.blurEffect;
         return visualEffectView;
     }
@@ -34,7 +42,10 @@ export class BlurView extends BlurViewBase {
     }
     [colorTintProperty.setNative](value: Color) {
         if (this.nativeViewProtected) {
-            this.blurEffect.setValueForKeyPath(value ? value.ios : null, 'colorTint');
+            this.blurEffect.setValueForKeyPath(
+                value ? value.ios : null,
+                'colorTint'
+            );
             this.nativeViewProtected.effect = this.blurEffect;
         }
     }
