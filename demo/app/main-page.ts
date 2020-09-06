@@ -1,5 +1,5 @@
-import { Page, Observable, PropertyChangeData, EventData } from 'tns-core-modules/ui/page';
-import { Slider } from 'tns-core-modules/ui/slider';
+import { Page, Observable, PropertyChangeData, EventData } from '@nativescript/core/ui/page';
+import { Slider } from '@nativescript/core/ui/slider';
 
 class Model extends Observable {
 

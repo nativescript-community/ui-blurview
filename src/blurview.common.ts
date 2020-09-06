@@ -1,4 +1,6 @@
-import { View, Property, Color } from 'tns-core-modules/ui/core/view';
+import { View } from '@nativescript/core/ui/core/view';
+import { Property } from '@nativescript/core/ui/core/properties';
+import { Color } from '@nativescript/core/color';
 
 
 export class BlurViewBase extends View {

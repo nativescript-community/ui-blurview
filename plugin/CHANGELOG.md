@@ -3,23 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.1.0](https://github.com/Akylas/nativescript-blurview/compare/v1.0.6...v1.1.0) (2019-10-22)
+# [1.1.0](https://github.com/nativescript-community/ui-blurview/compare/v1.0.6...v1.1.0) (2019-10-22)
 
 
 ### Features
 
-* testing new android lib for blur ([fd18928](https://github.com/Akylas/nativescript-blurview/commit/fd18928))
+* testing new android lib for blur ([fd18928](https://github.com/nativescript-community/ui-blurview/commit/fd18928))
 
 
 
 
 
-## [1.0.6](https://github.com/Akylas/nativescript-blurview/compare/v1.0.5...v1.0.6) (2019-10-16)
+## [1.0.6](https://github.com/nativescript-community/ui-blurview/compare/v1.0.5...v1.0.6) (2019-10-16)
 
 
 ### Bug Fixes
 
-* android fix on 6.0 ([500c3a8](https://github.com/Akylas/nativescript-blurview/commit/500c3a8))
+* android fix on 6.0 ([500c3a8](https://github.com/nativescript-community/ui-blurview/commit/500c3a8))
 
 
 
@@ -27,4 +27,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 1.0.5 (2019-09-19)
 
-**Note:** Version bump only for package nativescript-blurview
+**Note:** Version bump only for package @nativescript-community/ui-blurview

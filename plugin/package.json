@@ -1,5 +1,5 @@
 {
-    "name": "nativescript-blurview",
+    "name": "@nativescript-community/ui-blurview",
     "version": "1.1.0",
     "description": "A blurview plugin",
     "main": "blurview",
@@ -21,10 +21,10 @@
         "email": "martin.guillon@akylas.fr"
     },
     "bugs": {
-        "url": "https://github.com/Akylas/nativescript-blurview/issues"
+        "url": "https://github.com/nativescript-community/ui-blurview/issues"
     },
     "license": "Apache-2.0",
-    "homepage": "https://github.com/Akylas/nativescript-blurview",
+    "homepage": "https://github.com/nativescript-community/ui-blurview",
     "readmeFilename": "README.md",
     "bootstrapper": "nativescript-plugin-seed"
 }

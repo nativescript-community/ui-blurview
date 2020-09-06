@@ -1,5 +1,5 @@
 dependencies:
-  nativescript-blurview: 'link:../plugin'
+  @nativescript-community/ui-blurview: 'link:../plugin'
   nativescript-carto: 1.2.30
   nativescript-lottie: 4.0.0
   nativescript-theme-core: 2.0.24
@@ -5368,7 +5368,7 @@ specifiers:
   babylon: 6.18.0
   copy-webpack-plugin: ~5.0.4
   lazy: 1.0.11
-  nativescript-blurview: 'file:../plugin'
+  @nativescript-community/ui-blurview: 'file:../plugin'
   nativescript-carto: ^1.2.30
   nativescript-css-loader: ~0.26.1
   nativescript-dev-webpack: ^1.2.0

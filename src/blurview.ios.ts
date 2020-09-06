@@ -1,5 +1,5 @@
 import { BlurViewBase, blurRadiusProperty, colorTintAlphaProperty, colorTintProperty, scaleProperty } from './blurview.common';
-import { Color } from 'tns-core-modules/color/color';
+import { Color } from '@nativescript/core/color';
 
 export class BlurView extends BlurViewBase {
     nativeView: UIVisualEffectView;

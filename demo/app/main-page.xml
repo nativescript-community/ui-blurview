@@ -1,4 +1,4 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded"  xmlns:bv="nativescript-blurview" xmlns:Lottie="nativescript-lottie" xmlns:Map="nativescript-carto" xmlns:Cam="@nstudio/nativescript-camera-plus" >
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded"  xmlns:bv="@nativescript-community/ui-blurview" xmlns:Lottie="nativescript-lottie" xmlns:Map="nativescript-carto" xmlns:Cam="@nstudio/nativescript-camera-plus" >
     <Page.actionBar>
         <ActionBar title="NativeScript BlurView" class="action-bar" />
     </Page.actionBar>
