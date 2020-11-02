@@ -1,6 +1,6 @@
 {
     "name": "@nativescript-community/ui-blurview",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A blurview plugin",
     "main": "blurview",
     "typings": "blurview.d.ts",
