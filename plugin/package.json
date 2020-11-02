@@ -4,6 +4,7 @@
     "description": "A blurview plugin",
     "main": "blurview",
     "typings": "blurview.d.ts",
+    "sideEffects": false,
     "nativescript": {
         "platforms": {
             "android": "3.0.0",
