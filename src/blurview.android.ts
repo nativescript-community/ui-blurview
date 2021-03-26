@@ -1,77 +1,87 @@
+import { ContentView, LayoutBase, Page, View } from '@nativescript/core';
 import { BlurViewBase, blurRadiusProperty } from './blurview.common';
 
 export class BlurView extends BlurViewBase {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
-    // nativeViewProtected: no.danielzeller.blurbehindlib.BlurBehindLayout;
     constructor() {
         super();
     }
 
     public createNativeView() {
         const blurView = new eightbitlab.com.blurview.BlurView(this._context);
-        //     const useTextureView = false;
-        //     const blurTextureScale = 0.1;
-        //     const paddingVertical = 0;
-        //     const blurView = new no.danielzeller.blurbehindlib.BlurBehindLayout(this._context, useTextureView, blurTextureScale, paddingVertical);
-        //     blurView.setUpdateMode(no.danielzeller.blurbehindlib.UpdateMode.CONTINUOUSLY);
-        //     blurView.setUseChildAlphaAsMask(false);
-        //     const decorView = this.page.nativeViewProtected;
-        //     const rootView = decorView.getRootView();
-        // console.log('createNativeView', rootView);
-        //     blurView.setViewBehind(rootView);
         return blurView;
     }
-    initBlur() {
-        const decorView = this.page.nativeViewProtected;
-        // const rootView = decorView.getRootView();
-        const windowBackground = decorView.getBackground();
-        // console.log('BlurView', 'initBlur', windowBackground, this.nativeViewProtected.getMeasuredWidth(), this.nativeViewProtected.getMeasuredHeight());
-        this.nativeViewProtected
-            .setupWith(decorView)
-            // .setFrameClearDrawable(windowBackground)
-            .setBlurAlgorithm(
-                new com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur(
-                    this._context
-                )
-            );
-        // .setHasFixedTransformationMatrix(true);
+    public _setupUI(context: any, atIndex?: number): void {
+        super._setupUI(context, atIndex);
+    }
+    initBlur(parent) {
+        const decorView = parent.nativeViewProtected;
+        const view = this.nativeViewProtected;
 
-        if (this.blurRadius === 0) {
-            (this
-                .nativeView as eightbitlab.com.blurview.BlurView).setBlurEnabled(
-                false
+        if (android.os.Build.VERSION.SDK_INT < 17) {
+            view.setupWith(decorView).setBlurAlgorithm(
+                new com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur(this._context)
             );
         } else {
-            (this.nativeView as eightbitlab.com.blurview.BlurView)
-                .setBlurRadius(this.blurRadius / 3)
-                .setBlurEnabled(true);
+            view.setupWith(decorView).setBlurAlgorithm(new eightbitlab.com.blurview.RenderScriptBlur(this._context));
+        }
+        view.setBlurAutoUpdate(true);
+        // .setHasFixedTransformationMatrix(true);
+        if (this.blurRadius === 0) {
+            view.setBlurEnabled(false);
+        } else {
+            view.setBlurRadius(Math.min(this.blurRadius / 1, 24)).setBlurEnabled(true);
         }
     }
 
     initNativeView() {
-        const layoutChangeListener = new android.view.View.OnLayoutChangeListener(
-            {
-                onLayoutChange: (
-                    v: android.view.View,
-                    left: number,
-                    top: number,
-                    right: number,
-                    bottom: number,
-                    oldLeft: number,
-                    oldTop: number,
-                    oldRight: number,
-                    oldBottom: number
-                ) => {
-                    this.nativeViewProtected.removeOnLayoutChangeListener(
-                        layoutChangeListener
-                    );
-                    this.initBlur();
-                },
+        const layoutChangeListener = new android.view.View.OnLayoutChangeListener({
+            onLayoutChange: (
+                v: android.view.View,
+                left: number,
+                top: number,
+                right: number,
+                bottom: number,
+                oldLeft: number,
+                oldTop: number,
+                oldRight: number,
+                oldBottom: number
+            ) => {
+                this.nativeViewProtected.removeOnLayoutChangeListener(layoutChangeListener);
+                const parent = this.parent as View;
+                if (parent instanceof LayoutBase) {
+                    let index = parent.getChildIndex(this);
+                    while (index > 0) {
+                        const otherChild = parent.getChildAt(index - 1);
+                        if (otherChild instanceof LayoutBase) {
+                            return this.initBlur(otherChild);
+                        }
+                        index -= 1;
+                    }
+                }
+                let parentParent = parent.parent;
+                while (parentParent) {
+                    if (parentParent instanceof LayoutBase) {
+                        let index = parentParent.getChildIndex(parent);
+                        while (index > 0) {
+                            const otherChild = parentParent.getChildAt(index - 1);
+                            if (otherChild instanceof ContentView) {
+                                return this.initBlur(otherChild.content);
+                            }
+                            if (otherChild instanceof LayoutBase) {
+                                return this.initBlur(otherChild);
+                            }
+                            index -= 1;
+                        }
+                    } else if (parentParent instanceof Page) {
+                        return this.initBlur(parentParent);
+                    }
+                    parentParent = parentParent.parent;
+                }
+                this.initBlur(this.page);
             }
-        );
-        this.nativeViewProtected.addOnLayoutChangeListener(
-            layoutChangeListener
-        );
+        });
+        this.nativeViewProtected.addOnLayoutChangeListener(layoutChangeListener);
     }
 
     [blurRadiusProperty.setNative](value: number) {
@@ -79,9 +89,7 @@ export class BlurView extends BlurViewBase {
             if (value === 0) {
                 this.nativeViewProtected.setBlurEnabled(false);
             } else {
-                this.nativeViewProtected
-                    .setBlurRadius(Math.min(this.blurRadius / 3, 24))
-                    .setBlurEnabled(true);
+                this.nativeViewProtected.setBlurRadius(Math.min(this.blurRadius / 1, 24)).setBlurEnabled(true);
             }
         }
     }

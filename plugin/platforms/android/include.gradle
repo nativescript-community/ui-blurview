@@ -8,8 +8,9 @@ android {
 }
 
 dependencies {
-	// compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
-	// compile 'no.danielzeller.blurbehindlib:blurbehindlib:1.0.0'
-	compile 'com.eightbitlab:blurview:1.6.2'
-	compile 'com.eightbitlab:supportrenderscriptblur:1.0.2'
+	def blurviewVersion =  project.hasProperty("blurviewVersion") ? project.blurviewVersion : "1.6.6"
+	def supportrenderscriptblurVersion =  project.hasProperty("supportrenderscriptblurVersion") ? project.supportrenderscriptblurVersion : "1.0.2"
+
+	implementation "com.eightbitlab:blurview:$blurviewVersion"
+	implementation "com.eightbitlab:supportrenderscriptblur:$supportrenderscriptblurVersion"
 }	
