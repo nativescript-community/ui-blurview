@@ -1,0 +1,8 @@
+{
+    "uses": [
+        "eightbitlab.com.blurview:BlurView",
+        "eightbitlab.com.blurview:BlurAlgorithm",
+        "eightbitlab.com.blurview:RenderScriptBlur",
+        "eightbitlab.com.blurview:BlurViewFacade"
+    ]
+}
