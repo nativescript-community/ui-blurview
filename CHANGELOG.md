@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/nativescript-community/ui-blurview/compare/v1.2.3...v1.2.4) (2023-12-12)
+
+### Bug Fixes
+
+* **android:** native-api-usage ([bcd0e0f](https://github.com/nativescript-community/ui-blurview/commit/bcd0e0fa7bb9c96c941828acebc90e402672c947))
+
 ## [1.2.3](https://github.com/nativescript-community/ui-blurview/compare/v1.2.2...v1.2.3) (2023-12-12)
 
 **Note:** Version bump only for package ui-blurview
