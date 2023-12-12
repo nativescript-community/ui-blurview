@@ -1,5 +1,5 @@
 import { ContentView, LayoutBase, Page, View } from '@nativescript/core';
-import { BlurViewBase, blurRadiusProperty } from './blurview.common';
+import { BlurViewBase, blurRadiusProperty } from './index.common';
 
 export class BlurView extends BlurViewBase {
     nativeViewProtected: eightbitlab.com.blurview.BlurView;
@@ -18,13 +18,11 @@ export class BlurView extends BlurViewBase {
         const decorView = parent.nativeViewProtected;
         const view = this.nativeViewProtected;
 
-        if (android.os.Build.VERSION.SDK_INT < 17) {
-            view.setupWith(decorView).setBlurAlgorithm(
-                new com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur(this._context)
-            );
-        } else {
-            view.setupWith(decorView).setBlurAlgorithm(new eightbitlab.com.blurview.RenderScriptBlur(this._context));
-        }
+        // if (android.os.Build.VERSION.SDK_INT < 17) {
+        //     view.setupWith(decorView).setBlurAlgorithm(new com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur(this._context));
+        // } else {
+        view.setupWith(decorView, new eightbitlab.com.blurview.RenderScriptBlur(this._context));
+        // }
         view.setBlurAutoUpdate(true);
         // .setHasFixedTransformationMatrix(true);
         if (this.blurRadius === 0) {
@@ -32,21 +30,12 @@ export class BlurView extends BlurViewBase {
         } else {
             view.setBlurRadius(Math.min(this.blurRadius / 1, 24)).setBlurEnabled(true);
         }
+        view.setClipToOutline(true);
     }
 
     initNativeView() {
         const layoutChangeListener = new android.view.View.OnLayoutChangeListener({
-            onLayoutChange: (
-                v: android.view.View,
-                left: number,
-                top: number,
-                right: number,
-                bottom: number,
-                oldLeft: number,
-                oldTop: number,
-                oldRight: number,
-                oldBottom: number
-            ) => {
+            onLayoutChange: (v: android.view.View, left: number, top: number, right: number, bottom: number, oldLeft: number, oldTop: number, oldRight: number, oldBottom: number) => {
                 this.nativeViewProtected.removeOnLayoutChangeListener(layoutChangeListener);
                 const parent = this.parent as View;
                 if (parent instanceof LayoutBase) {

@@ -1,0 +1,9 @@
+repositories {
+	mavenCentral()
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	def blurviewVersion =  project.hasProperty("blurviewVersion") ? project.blurviewVersion : "2.0.3"
+	implementation "com.github.Dimezis:BlurView:version-$blurviewVersion"
+}	

@@ -1,7 +1,0 @@
-node_modules/
-bin/
-hooks/
-*.ts
-*.old
-tsconfig.json
-!*.d.ts
