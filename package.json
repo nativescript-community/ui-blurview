@@ -4,7 +4,7 @@
         "prepare": "npm run setup",
         "tsc": "cp src/canvas.d.ts plugin && tsc -skipLibCheck -d",
         "build.plugin": "cp README.md plugin/ && rm -f .tsbuildinfo && npm run tsc",
-        "clean": "rimraf 'packages/**/*.d.ts' 'packages/**/*.js' 'packages/**/*.js.map' 'packages/**/*.metada' 'packages/**/angular/ng-package.json'",
+        "clean": "rimraf -g 'packages/**/*.d.ts' 'packages/**/*.tsbuildinfo' 'packages/*/*.js' 'packages/*/!(platforms)/**/*.js' 'packages/**/*.mjs' 'packages/**/*.js.map' 'packages/**/*.mjs.map' 'packages/**/*.metada' 'packages/**/angular/ng-package.json'",
         "build.android": "bash src-native/android/build.sh",
         "build.ios": "bash src-native/ios/build.sh",
         "build.native": "npm run build.android && npm run build.ios",
@@ -19,10 +19,10 @@
         "plugin.watch.ios": "npm i && npm-watch build.ios",
         "plugin.watch": "npm run plugin.watch.tsc & npm run plugin.watch.android & npm run plugin.watch.ios",
         "publish": "npm run setup && npm run clean && npm run build.all && npm run readme && npm run doc && npm run commit_readme_doc_changes && lerna publish",
-        "sync": "node ./tools/sync.js",
+        "sync": "node ./tools/sync.mjs",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "build.all": "npm run build",
-        "fullclean": "npm run clean && rimraf 'packages/**/node_modules' 'demo-*/hooks' 'demo-*/node_modules' 'package-lock.json' 'pnpm-lock.yaml' 'node_modules'",
+        "fullclean": "npm run clean && rimraf -g 'packages/**/node_modules' 'demo-*/hooks' 'demo-*/node_modules' 'package-lock.json' 'pnpm-lock.yaml' 'node_modules'",
         "demo.vue.android": "cd ./demo-vue && ns run android --no-hmr --env.watchNodeModules",
         "demo.vue.clean": "cd ./demo-vue && ns clean",
         "demo.vue.ios": "cd ./demo-vue && ns run ios --no-hmr --env.watchNodeModules",
@@ -32,7 +32,7 @@
         "start": "./node_modules/.bin/ntl -A -s 15 -o",
         "submodules": "git submodule update --init",
         "update": "node ./tools/update.js",
-        "commit_readme_doc_changes": "git add docs/** *.md ; git commit -m \"readme/doc\" ; echo \"commit readme doc done\""
+        "commit_readme_doc_changes": "git add docs *.md ; git commit -m \"readme/doc\" ; echo \"commit readme doc done\""
     },
     "keywords": [
         "NativeScript",
@@ -51,7 +51,7 @@
     "homepage": "https://github.com/nativescript-community/ui-blurview",
     "readmeFilename": "README.md",
     "devDependencies": {
-        "@nativescript-community/plugin-seed-tools": "file:tools",
+        "@nativescript-community/plugin-seed-tools": "portal:tools",
         "@nativescript-community/template-snippet": "file:demo-snippets"
     },
     "bootstrapper": "nativescript-plugin-seed",
@@ -72,17 +72,13 @@
     },
     "workspaces": [
         "packages/*",
-        "demo-vue",
-        "demo-vue3",
-        "demo-ng",
-        "demo-svelte",
-        "demo-react",
-        "demo-snippets"
+        "demo*"
     ],
     "engines": {
         "npm": "please use yarn or pnpm",
         "yarn": ">=1.19.1",
         "pnpm": ">=7.0.0",
         "node": "^14.20.0 || ^16.13.0 || >=18.10.0"
-    }
+    },
+    "packageManager": "yarn@4.10.2"
 }
